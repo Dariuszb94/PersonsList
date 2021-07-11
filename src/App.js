@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  HashRouter,
+  Route,
+  Switch,
+} from "react-router-dom";
 import "./App.css";
 import PersonsList from "./Components/PersonsList/PersonsList";
 import Edit from "./Components/Edit/Edit";
@@ -9,7 +14,7 @@ function App() {
   const [peopleList, setPeopleList] = useState([]);
 
   return (
-    <Router>
+    <HashRouter>
       <section className="body-layout">
         <PersonsList setPeopleList={setPeopleList} peopleList={peopleList} />
 
@@ -22,7 +27,7 @@ function App() {
           </Route>
         </Switch>
       </section>
-    </Router>
+    </HashRouter>
   );
 }
 
