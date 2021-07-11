@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+import PersonsList from "./Components/PersonsList/PersonsList";
+import Edit from "./Components/Edit/Edit";
+import Person from "./Components/Person/Person";
 
 function App() {
+  const [peopleList, setPeopleList] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <section className="body-layout">
+        <PersonsList setPeopleList={setPeopleList} peopleList={peopleList} />
+
+        <Switch>
+          <Route path="/edit/:personID">
+            <Edit peopleList={peopleList} setPeopleList={setPeopleList} />
+          </Route>
+          <Route path="/details/:personID">
+            <Person peopleList={peopleList} />
+          </Route>
+        </Switch>
+      </section>
+    </Router>
   );
 }
 
