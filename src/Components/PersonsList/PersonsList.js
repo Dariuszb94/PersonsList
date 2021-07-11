@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Dexie from "dexie";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { useParams } from "react-router";
+
 import "./PersonsList.scss";
-const PersonsList = ({ setPeopleList, peopleList }) => {
+const PersonsList = ({ setPeopleList, peopleList, active }) => {
   const [people, setPeople] = useState([]);
+  const [error, setError] = useState(false);
+  const list = useRef(null);
+  let { personID } = useParams();
   const db = new Dexie("PersonsDB");
   db.version(1).stores({
     persons: "++id",
@@ -61,23 +66,35 @@ const PersonsList = ({ setPeopleList, peopleList }) => {
   };
   const getPeople = () => {
     const url = "https://randomuser.me/api/?results=10";
-    axios(url).then((res) => {
-      setPeople(res.data.results);
-      console.log(res.data.results);
-    });
+    axios(url)
+      .then((res) => {
+        setPeople(res.data.results);
+      })
+      .catch(function () {
+        setError(true);
+      });
   };
   const addPeople = () => {
     const url = "https://randomuser.me/api/?results=2";
-    axios(url).then((res) => {
-      const prevPeople = people;
-      const updatedPeople = prevPeople.concat(res.data.results);
-      setPeople(updatedPeople);
-    });
+    axios(url)
+      .then((res) => {
+        const prevPeople = people;
+        const updatedPeople = prevPeople.concat(res.data.results);
+        setPeople(updatedPeople);
+        scrollToAdded();
+      })
+      .catch(function () {
+        setError(true);
+      });
+  };
+  const scrollToAdded = () => {
+    list.current.scrollTop = list.current.scrollHeight;
   };
   return (
     <section className="persons-list-container">
       <div className="actions">
         <button
+          className="actions__modify-list"
           onClick={() => {
             addPeople();
           }}
@@ -86,6 +103,7 @@ const PersonsList = ({ setPeopleList, peopleList }) => {
         </button>
 
         <button
+          className="actions__modify-list"
           onClick={() => {
             getPeople();
           }}
@@ -93,20 +111,19 @@ const PersonsList = ({ setPeopleList, peopleList }) => {
           reset
         </button>
       </div>
-      <ul className="persons-list">
+      {error ? <div className="error">Error occured</div> : null}
+      <ul ref={list} className="persons-list">
         {people.map((person, index) => (
           <li
-            className="persons-list__person"
+            className={`persons-list__person ${
+              index === active ? "active" : ""
+            }`}
             key={index}
             onClick={() => {
               goDetails(index);
             }}
           >
-            {person.name.title}
-            {person.name.first}
-            {person.name.last}
-            {person.name.phone}
-            {person.name.email}
+            {person.name.title} {person.name.first} {person.name.last}
           </li>
         ))}
       </ul>

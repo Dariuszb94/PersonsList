@@ -12,18 +12,23 @@ import Person from "./Components/Person/Person";
 
 function App() {
   const [peopleList, setPeopleList] = useState([]);
+  const [active, setActive] = useState(0);
 
   return (
     <HashRouter>
       <div className="body-layout">
-        <PersonsList setPeopleList={setPeopleList} peopleList={peopleList} />
+        <PersonsList
+          setPeopleList={setPeopleList}
+          peopleList={peopleList}
+          active={active}
+        />
 
         <Switch>
           <Route path="/edit/:personID">
             <Edit peopleList={peopleList} setPeopleList={setPeopleList} />
           </Route>
           <Route exact path="/details/:personID">
-            <Person peopleList={peopleList} />
+            <Person peopleList={peopleList} setActive={setActive} />
           </Route>
         </Switch>
       </div>

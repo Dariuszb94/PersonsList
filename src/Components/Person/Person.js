@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
-const Person = ({ peopleList }) => {
+const Person = ({ peopleList, setActive }) => {
   const [people, setPeople] = useState([]);
   let { personID } = useParams();
   const history = useHistory();
   useEffect(() => {
     setPeople(peopleList);
   }, [peopleList]);
-
+  useEffect(() => {
+    setActive(parseInt(personID));
+  }, [personID]);
   const edit = (id) => {
     history.push(`/edit/${id}`);
   };
@@ -20,7 +22,6 @@ const Person = ({ peopleList }) => {
             src={people[personID].picture.large}
             alt={`${people[personID].name.first}-image`}
           />
-          {console.log(people[personID])}
           <div className="details__names">
             <div>{people[personID].name.title}</div>
             <div>{people[personID].name.first}</div>
