@@ -93,9 +93,10 @@ const PersonsList = ({ setPeopleList, peopleList }) => {
           reset
         </button>
       </div>
-      <ul class="persons-list">
+      <ul className="persons-list">
         {people.map((person, index) => (
           <li
+            className="persons-list__person"
             key={index}
             onClick={() => {
               goDetails(index);

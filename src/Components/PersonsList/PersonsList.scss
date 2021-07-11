@@ -1,10 +1,16 @@
 .persons-list {
   list-style: none;
-  margin: 0;
+  margin: 8px 0;
   padding: 0;
   max-height: 160px;
   overflow: scroll;
   @media (min-width: 800px) {
     max-height: 400px;
+  }
+}
+.persons-list__person {
+  padding: 4px 8px;
+  &:nth-child(even) {
+    background-color: rgb(228, 228, 228);
   }
 }
