@@ -95,19 +95,17 @@ const PersonsList = ({ setPeopleList, peopleList }) => {
       </div>
       <ul class="persons-list">
         {people.map((person, index) => (
-          <li key={index}>
+          <li
+            key={index}
+            onClick={() => {
+              goDetails(index);
+            }}
+          >
             {person.name.title}
             {person.name.first}
             {person.name.last}
             {person.name.phone}
             {person.name.email}
-            <button
-              onClick={() => {
-                goDetails(index);
-              }}
-            >
-              details{index}
-            </button>
           </li>
         ))}
       </ul>
