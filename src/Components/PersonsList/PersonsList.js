@@ -1,21 +1,18 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect } from "react";
 import Dexie from "dexie";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-
+import "./PersonsList.scss";
 const PersonsList = ({ setPeopleList, peopleList }) => {
   const [people, setPeople] = useState([]);
-  //const [preDBUpdate, setPreDBUpdate] = useState([]);
-
   const db = new Dexie("PersonsDB");
   db.version(1).stores({
-    persons: "++id, name, age",
+    persons: "++id",
   });
   useEffect(() => {
     if (people.length) {
       updateDB();
     }
-    console.log(people);
     setPeopleList(people);
   }, [people]);
   useEffect(async () => {
@@ -32,12 +29,7 @@ const PersonsList = ({ setPeopleList, peopleList }) => {
   const goDetails = (id) => {
     history.push(`/details/${id}`);
   };
-  // useEffect(() => {
-  //   console.log("asdasd");
-  //   if ()
-  //     console.log("asdasd");
-  //   //  setPeople(peopleList);
-  // }, [peopleList]);
+
   useEffect(async () => {
     const fetchedDB = await db.persons.toArray();
 
@@ -83,38 +75,42 @@ const PersonsList = ({ setPeopleList, peopleList }) => {
     });
   };
   return (
-    <section>
-      <button
-        onClick={() => {
-          addPeople();
-        }}
-      >
-        add
-      </button>
+    <section className="persons-list-container">
+      <div className="actions">
+        <button
+          onClick={() => {
+            addPeople();
+          }}
+        >
+          add
+        </button>
 
-      <button
-        onClick={() => {
-          getPeople();
-        }}
-      >
-        reset
-      </button>
-      {people.map((person, index) => (
-        <li key={index}>
-          {person.name.title}
-          {person.name.first}
-          {person.name.last}
-          {person.name.phone}
-          {person.name.email}
-          <button
-            onClick={() => {
-              goDetails(index);
-            }}
-          >
-            details{index}
-          </button>
-        </li>
-      ))}
+        <button
+          onClick={() => {
+            getPeople();
+          }}
+        >
+          reset
+        </button>
+      </div>
+      <ul class="persons-list">
+        {people.map((person, index) => (
+          <li key={index}>
+            {person.name.title}
+            {person.name.first}
+            {person.name.last}
+            {person.name.phone}
+            {person.name.email}
+            <button
+              onClick={() => {
+                goDetails(index);
+              }}
+            >
+              details{index}
+            </button>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 };

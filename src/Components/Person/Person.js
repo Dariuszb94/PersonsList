@@ -16,7 +16,10 @@ const Person = ({ peopleList }) => {
     <section>
       {people[personID] ? (
         <article className="details">
-          <img src={people[personID].picture.large} />
+          <img
+            src={people[personID].picture.large}
+            alt={`${people[personID].name.first}-image`}
+          />
           {console.log(people[personID])}
           <div className="details__names">
             <div>{people[personID].name.title}</div>

@@ -8,6 +8,8 @@ const Edit = ({ peopleList, setPeopleList }) => {
   const [surname, setSurname] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [image, setImage] = useState("");
+
   const [emailInvalid, setEmailInvalid] = useState(false);
   const [phoneInvalid, setPhoneInvalid] = useState(false);
 
@@ -22,6 +24,7 @@ const Edit = ({ peopleList, setPeopleList }) => {
       setSurname(peopleList[personID].name.last);
       setPhone(peopleList[personID].phone);
       setEmail(peopleList[personID].email);
+      setImage(peopleList[personID].picture.large);
     }
   }, [peopleList]);
   useEffect(() => {
@@ -63,7 +66,6 @@ const Edit = ({ peopleList, setPeopleList }) => {
       return true;
     } else {
       setEmailInvalid(true);
-      console.log("nok");
       return false;
     }
   }
@@ -83,6 +85,7 @@ const Edit = ({ peopleList, setPeopleList }) => {
   return (
     <section>
       <form onSubmit={handleSubmit}>
+        <img src={image} alt={`${name}-image`} />
         <div>
           <label> first name</label>
           <input type="text" value={name} onChange={handleChangeName} />
