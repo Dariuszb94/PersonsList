@@ -12,7 +12,8 @@ const Edit = ({ peopleList, setPeopleList }) => {
 
   const [emailInvalid, setEmailInvalid] = useState(false);
   const [phoneInvalid, setPhoneInvalid] = useState(false);
-
+  const [nameInvalid, setNameInvalid] = useState(false);
+  const [surnameInvalid, setSurnameInvalid] = useState(false);
   let { personID } = useParams();
   const history = useHistory();
   useEffect(() => {
@@ -27,10 +28,7 @@ const Edit = ({ peopleList, setPeopleList }) => {
       setImage(peopleList[personID].picture.large);
     }
   }, [peopleList, personID]);
-  useEffect(() => {
-    //if (JSON.stringify(peopleList) !== JSON.stringify(people))
-    // setPeopleList(people);
-  }, [people]);
+
   const handleChangeName = (e) => {
     setName(e.target.value);
   };
@@ -51,7 +49,12 @@ const Edit = ({ peopleList, setPeopleList }) => {
     peopleListPrev[personID].name.last = surname;
     peopleListPrev[personID].email = email;
     peopleListPrev[personID].phone = phone;
-    if (validationMail() && validationPhone()) {
+    if (
+      validationMail() &&
+      validationPhone() &&
+      validationName() &&
+      validationSurname()
+    ) {
       setPeopleList(peopleListPrev);
     } else {
       return false;
@@ -69,6 +72,26 @@ const Edit = ({ peopleList, setPeopleList }) => {
       return false;
     }
   }
+  function validationName() {
+    const nameRegex = /^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
+    if (nameRegex.test(String(name).toLowerCase())) {
+      setNameInvalid(false);
+      return true;
+    } else {
+      setNameInvalid(true);
+      return false;
+    }
+  }
+  function validationSurname() {
+    const nameRegex = /^[a-zA-Z]+$/;
+    if (nameRegex.test(String(name).toLowerCase())) {
+      setSurnameInvalid(false);
+      return true;
+    } else {
+      setSurnameInvalid(true);
+      return false;
+    }
+  }
   function validationPhone() {
     const phoneRegex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/g;
     if (phoneRegex.test(String(phone).toLowerCase())) {
@@ -83,36 +106,46 @@ const Edit = ({ peopleList, setPeopleList }) => {
     history.push(`/details/${personID}`);
   };
   return (
-    <section>
+    <section className="edit-container">
       <form onSubmit={handleSubmit}>
-        <img src={image} alt={`${name}`} />
-        <div>
-          <label> first name</label>
-          <input type="text" value={name} onChange={handleChangeName} />
+        <img className="edit__img" src={image} alt={`${name}`} />
+        <div className="input-container">
+          <label className="input__key">First name</label>
+          <input
+            type="text"
+            className={`input__value ${nameInvalid ? "invalid" : ""}`}
+            value={name}
+            onChange={handleChangeName}
+          />
         </div>
-        <div>
-          <label> last name</label>
-          <input type="text" value={surname} onChange={handleChangeSurname} />
+        <div className="input-container">
+          <label className="input__key">Last name</label>
+          <input
+            type="text"
+            className={`input__value ${surnameInvalid ? "invalid" : ""}`}
+            value={surname}
+            onChange={handleChangeSurname}
+          />
         </div>
-        <div>
-          <label>Phone</label>
+        <div className="input-container">
+          <label className="input__key">Phone</label>
           <input
             type="text"
             value={phone}
             onChange={handleChangePhone}
-            className={`${phoneInvalid ? "invalid" : ""}`}
+            className={`input__value ${phoneInvalid ? "invalid" : ""}`}
           />
         </div>
-        <div>
-          <label>Email</label>
+        <div className="input-container">
+          <label className="input__key">Email</label>
           <input
             type="text"
             value={email}
             onChange={handleChangeEmail}
-            className={`${emailInvalid ? "invalid" : ""}`}
+            className={`input__value ${emailInvalid ? "invalid" : ""}`}
           />
         </div>
-        <input type="submit" value="Wyślij" />
+        <input className="send" type="submit" value="Wyślij" />
       </form>
     </section>
   );
