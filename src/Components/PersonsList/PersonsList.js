@@ -123,6 +123,7 @@ const PersonsList = ({ setPeopleList, peopleList, active }) => {
               goDetails(index);
             }}
           >
+            {console.log(active)}
             {person.name.title} {person.name.first} {person.name.last}
           </li>
         ))}

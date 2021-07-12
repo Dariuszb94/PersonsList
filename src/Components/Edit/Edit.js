@@ -26,7 +26,7 @@ const Edit = ({ peopleList, setPeopleList }) => {
       setEmail(peopleList[personID].email);
       setImage(peopleList[personID].picture.large);
     }
-  }, [peopleList]);
+  }, [peopleList, personID]);
   useEffect(() => {
     //if (JSON.stringify(peopleList) !== JSON.stringify(people))
     // setPeopleList(people);
@@ -70,7 +70,7 @@ const Edit = ({ peopleList, setPeopleList }) => {
     }
   }
   function validationPhone() {
-    const phoneRegex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g;
+    const phoneRegex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/g;
     if (phoneRegex.test(String(phone).toLowerCase())) {
       setPhoneInvalid(false);
       return true;

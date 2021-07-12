@@ -1,10 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  HashRouter,
-  Route,
-  Switch,
-} from "react-router-dom";
+import React, { useState } from "react";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import PersonsList from "./Components/PersonsList/PersonsList";
 import Edit from "./Components/Edit/Edit";
@@ -12,7 +7,7 @@ import Person from "./Components/Person/Person";
 
 function App() {
   const [peopleList, setPeopleList] = useState([]);
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState();
 
   return (
     <HashRouter>
