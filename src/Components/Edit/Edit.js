@@ -44,7 +44,6 @@ const Edit = ({ peopleList, setPeopleList }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const peopleListPrev = [...peopleList];
-    validationMail();
     peopleListPrev[personID].name.first = name;
     peopleListPrev[personID].name.last = surname;
     peopleListPrev[personID].email = email;
@@ -73,7 +72,7 @@ const Edit = ({ peopleList, setPeopleList }) => {
     }
   }
   function validationName() {
-    const nameRegex = /^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
+    const nameRegex = /^[a-zA-Z]+$/;
     if (nameRegex.test(String(name).toLowerCase())) {
       setNameInvalid(false);
       return true;
