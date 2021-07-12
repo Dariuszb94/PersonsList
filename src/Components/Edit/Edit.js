@@ -85,7 +85,7 @@ const Edit = ({ peopleList, setPeopleList }) => {
   return (
     <section>
       <form onSubmit={handleSubmit}>
-        <img src={image} alt={`${name}-image`} />
+        <img src={image} alt={`${name}`} />
         <div>
           <label> first name</label>
           <input type="text" value={name} onChange={handleChangeName} />
