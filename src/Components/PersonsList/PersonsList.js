@@ -2,14 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import Dexie from "dexie";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { useParams } from "react-router";
 
 import "./PersonsList.scss";
 const PersonsList = ({ setPeopleList, peopleList, active }) => {
   const [people, setPeople] = useState([]);
   const [error, setError] = useState(false);
   const list = useRef(null);
-  let { personID } = useParams();
   const db = new Dexie("PersonsDB");
   db.version(1).stores({
     persons: "++id",
@@ -19,23 +17,32 @@ const PersonsList = ({ setPeopleList, peopleList, active }) => {
       updateDB();
     }
     setPeopleList(people);
-  }, [people]);
-  useEffect(async () => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [people, setPeopleList]);
+  useEffect(() => {
+    checkDB();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [peopleList]);
+  async function checkDB() {
     const fetchedDB = await db.persons.toArray();
+
     if (
       peopleList.length &&
-      JSON.stringify(peopleList) != JSON.stringify(fetchedDB)
+      JSON.stringify(peopleList) !== JSON.stringify(fetchedDB)
     ) {
       updateDB();
     }
-  }, [peopleList]);
+  }
   const history = useHistory();
 
   const goDetails = (id) => {
     history.push(`/details/${id}`);
   };
 
-  useEffect(async () => {
+  useEffect(() => {
+    checkGet();
+  }, []);
+  async function checkGet() {
     const fetchedDB = await db.persons.toArray();
 
     if (fetchedDB.length > 0) {
@@ -44,9 +51,7 @@ const PersonsList = ({ setPeopleList, peopleList, active }) => {
     } else {
       getPeople();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  }
   const updateDB = async () => {
     await db.persons.clear();
     var preDB = [];
@@ -92,6 +97,7 @@ const PersonsList = ({ setPeopleList, peopleList, active }) => {
   };
   return (
     <section className="persons-list-container">
+      <h1 className="persons-list__header">List of people</h1>
       <div className="actions">
         <button
           className="actions__modify-list"
@@ -123,7 +129,6 @@ const PersonsList = ({ setPeopleList, peopleList, active }) => {
               goDetails(index);
             }}
           >
-            {console.log(active)}
             {person.name.title} {person.name.first} {person.name.last}
           </li>
         ))}

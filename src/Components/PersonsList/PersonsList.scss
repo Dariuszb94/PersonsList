@@ -1,5 +1,5 @@
 .persons-list {
-  margin: 8px 0;
+  margin: 32px 0;
   max-height: 160px;
   overflow: scroll;
   border: 1px solid #f7f7f7;
@@ -38,6 +38,7 @@
   font-size: 14px;
   line-height: 20px;
   text-align: center;
+  cursor: pointer;
   color: #4a4a4a;
   font-weight: 400;
   background-color: white;
@@ -45,4 +46,8 @@
 }
 .persons-list-container {
   margin: 8px 0;
+}
+.persons-list__header {
+  text-align: center;
+  margin: 32px 0;
 }
