@@ -24,13 +24,16 @@ const PersonsList = ({ setPeopleList, peopleList, active }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [peopleList]);
   async function checkDB() {
-    const fetchedDB = await db.persons.toArray();
-
-    if (
-      peopleList.length &&
-      JSON.stringify(peopleList) !== JSON.stringify(fetchedDB)
-    ) {
-      updateDB();
+    try {
+      const fetchedDB = await db.persons.toArray();
+      if (
+        peopleList.length &&
+        JSON.stringify(peopleList) !== JSON.stringify(fetchedDB)
+      ) {
+        updateDB();
+      }
+    } catch (err) {
+      console.log(err);
     }
   }
   const history = useHistory();
@@ -43,15 +46,19 @@ const PersonsList = ({ setPeopleList, peopleList, active }) => {
     checkGet();
   }, []);
   async function checkGet() {
-    const fetchedDB = await db.persons.toArray();
-
-    if (fetchedDB.length > 0) {
-      setPeople(fetchedDB);
-      return;
-    } else {
-      getPeople();
+    try {
+      const fetchedDB = await db.persons.toArray();
+      if (fetchedDB.length > 0) {
+        setPeople(fetchedDB);
+        return;
+      } else {
+        getPeople();
+      }
+    } catch (err) {
+      console.log(err);
     }
   }
+
   const updateDB = async () => {
     await db.persons.clear();
     var preDB = [];
@@ -101,6 +108,7 @@ const PersonsList = ({ setPeopleList, peopleList, active }) => {
       <div className="actions">
         <button
           className="actions__modify-list"
+          id="add"
           onClick={() => {
             addPeople();
           }}
