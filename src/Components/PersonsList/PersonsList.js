@@ -44,6 +44,7 @@ const PersonsList = ({ setPeopleList, peopleList, active }) => {
 
   useEffect(() => {
     checkGet();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   async function checkGet() {
     try {

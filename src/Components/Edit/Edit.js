@@ -3,7 +3,6 @@ import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
 import "./Edit.scss";
 const Edit = ({ peopleList, setPeopleList }) => {
-  const [people, setPeople] = useState([]);
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [phone, setPhone] = useState("");
@@ -16,9 +15,7 @@ const Edit = ({ peopleList, setPeopleList }) => {
   const [surnameInvalid, setSurnameInvalid] = useState(false);
   let { personID } = useParams();
   const history = useHistory();
-  useEffect(() => {
-    setPeople(peopleList);
-  }, [peopleList]);
+
   useEffect(() => {
     if (peopleList[personID]) {
       setName(peopleList[personID].name.first);
@@ -44,16 +41,16 @@ const Edit = ({ peopleList, setPeopleList }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const peopleListPrev = [...peopleList];
-    peopleListPrev[personID].name.first = name;
-    peopleListPrev[personID].name.last = surname;
-    peopleListPrev[personID].email = email;
-    peopleListPrev[personID].phone = phone;
     if (
       validationMail() &&
       validationPhone() &&
       validationName() &&
       validationSurname()
     ) {
+      peopleListPrev[personID].name.first = name;
+      peopleListPrev[personID].name.last = surname;
+      peopleListPrev[personID].email = email;
+      peopleListPrev[personID].phone = phone;
       setPeopleList(peopleListPrev);
     } else {
       return false;
