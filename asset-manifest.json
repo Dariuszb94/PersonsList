@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/PersonsList/static/css/main.ca363553.chunk.css",
-    "main.js": "/PersonsList/static/js/main.b223a42d.chunk.js",
-    "main.js.map": "/PersonsList/static/js/main.b223a42d.chunk.js.map",
+    "main.js": "/PersonsList/static/js/main.a2065ffe.chunk.js",
+    "main.js.map": "/PersonsList/static/js/main.a2065ffe.chunk.js.map",
     "runtime-main.js": "/PersonsList/static/js/runtime-main.23ceb17d.js",
     "runtime-main.js.map": "/PersonsList/static/js/runtime-main.23ceb17d.js.map",
     "static/js/2.60c7f1ca.chunk.js": "/PersonsList/static/js/2.60c7f1ca.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.23ceb17d.js",
     "static/js/2.60c7f1ca.chunk.js",
     "static/css/main.ca363553.chunk.css",
-    "static/js/main.b223a42d.chunk.js"
+    "static/js/main.a2065ffe.chunk.js"
   ]
 }
