@@ -7,6 +7,8 @@ import MailIcon from "@material-ui/icons/Mail";
 import "./Person.scss";
 const Person = ({ peopleList, setActive }) => {
   const [people, setPeople] = useState([]);
+  const [personChanged, setPersonChanged] = useState(false);
+
   let { personID } = useParams();
   const history = useHistory();
   useEffect(() => {
@@ -14,6 +16,7 @@ const Person = ({ peopleList, setActive }) => {
   }, [peopleList]);
   useEffect(() => {
     setActive(parseInt(personID));
+    setPersonChanged((prev) => !prev);
   }, [personID, setActive]);
   const edit = (id) => {
     history.push(`/edit/${id}`);
@@ -23,7 +26,9 @@ const Person = ({ peopleList, setActive }) => {
       {people[personID] ? (
         <article className="details">
           <img
-            className="details__img"
+            className={`${
+              personChanged ? "details__img" : "details__img-active"
+            }`}
             src={people[personID].picture.large}
             alt={`${people[personID].name.first}`}
           />

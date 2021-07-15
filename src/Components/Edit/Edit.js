@@ -80,7 +80,7 @@ const Edit = ({ peopleList, setPeopleList }) => {
   }
   function validationSurname() {
     const nameRegex = /^[a-zA-Z]+$/;
-    if (nameRegex.test(String(name).toLowerCase())) {
+    if (nameRegex.test(String(surname).toLowerCase())) {
       setSurnameInvalid(false);
       return true;
     } else {

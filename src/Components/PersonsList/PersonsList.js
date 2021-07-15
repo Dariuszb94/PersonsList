@@ -121,6 +121,7 @@ const PersonsList = ({ setPeopleList, peopleList, active }) => {
         <button
           className="actions__modify-list"
           onClick={() => {
+            setPeople([]);
             getPeople()
               .then((res) => {
                 setPeople(res.data.results);
@@ -147,7 +148,9 @@ const PersonsList = ({ setPeopleList, peopleList, active }) => {
               goDetails(index);
             }}
           >
-            {person.name.title} {person.name.first} {person.name.last}
+            <div className="persons-list__person__content">
+              {person.name.title} {person.name.first} {person.name.last}
+            </div>
           </li>
         ))}
       </ul>
