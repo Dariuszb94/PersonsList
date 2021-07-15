@@ -4,13 +4,14 @@ import "./App.scss";
 import PersonsList from "./Components/PersonsList/PersonsList";
 import Edit from "./Components/Edit/Edit";
 import Person from "./Components/Person/Person";
-
+import Cursor from "./Components/Cursor/Cursor";
 function App() {
   const [peopleList, setPeopleList] = useState([]);
   const [active, setActive] = useState();
 
   return (
     <HashRouter>
+      <Cursor />
       <div className="body-layout">
         <PersonsList
           setPeopleList={setPeopleList}

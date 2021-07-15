@@ -4,6 +4,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 import "./PersonsList.scss";
+
 const PersonsList = ({ setPeopleList, peopleList, active }) => {
   const [people, setPeople] = useState([]);
   const [error, setError] = useState(false);
@@ -20,7 +21,7 @@ const PersonsList = ({ setPeopleList, peopleList, active }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [people, setPeopleList]);
   useEffect(() => {
-    checkDB();
+    if (peopleList) checkDB();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [peopleList]);
   async function checkDB() {
@@ -53,7 +54,13 @@ const PersonsList = ({ setPeopleList, peopleList, active }) => {
         setPeople(fetchedDB);
         return;
       } else {
-        getPeople();
+        getPeople()
+          .then((res) => {
+            setPeople(res.data.results);
+          })
+          .catch(() => {
+            setError(true);
+          });
       }
     } catch (err) {
       console.log(err);
@@ -77,16 +84,10 @@ const PersonsList = ({ setPeopleList, peopleList, active }) => {
     }
     db.persons.bulkAdd(preDB);
   };
-  const getPeople = () => {
-    const url = "https://randomuser.me/api/?results=10";
-    axios(url)
-      .then((res) => {
-        setPeople(res.data.results);
-      })
-      .catch(function () {
-        setError(true);
-      });
+  const getPeople = async () => {
+    return await axios.get("https://randomuser.me/api/?results=10");
   };
+
   const addPeople = () => {
     const url = "https://randomuser.me/api/?results=2";
     axios(url)
@@ -96,7 +97,7 @@ const PersonsList = ({ setPeopleList, peopleList, active }) => {
         setPeople(updatedPeople);
         scrollToAdded();
       })
-      .catch(function () {
+      .catch(() => {
         setError(true);
       });
   };
@@ -120,13 +121,21 @@ const PersonsList = ({ setPeopleList, peopleList, active }) => {
         <button
           className="actions__modify-list"
           onClick={() => {
-            getPeople();
+            getPeople()
+              .then((res) => {
+                setPeople(res.data.results);
+              })
+              .catch(() => {
+                setError(true);
+              });
           }}
+          id="reset"
         >
           reset
         </button>
       </div>
       {error ? <div className="error">Error occured</div> : null}
+      {error}
       <ul ref={list} className="persons-list">
         {people.map((person, index) => (
           <li
