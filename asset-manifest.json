@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/PersonsList/static/css/main.edf35c5a.chunk.css",
-    "main.js": "/PersonsList/static/js/main.02113b4b.chunk.js",
-    "main.js.map": "/PersonsList/static/js/main.02113b4b.chunk.js.map",
+    "main.css": "/PersonsList/static/css/main.88e5978d.chunk.css",
+    "main.js": "/PersonsList/static/js/main.042475ac.chunk.js",
+    "main.js.map": "/PersonsList/static/js/main.042475ac.chunk.js.map",
     "runtime-main.js": "/PersonsList/static/js/runtime-main.b63bcb4c.js",
     "runtime-main.js.map": "/PersonsList/static/js/runtime-main.b63bcb4c.js.map",
     "static/js/2.66186c35.chunk.js": "/PersonsList/static/js/2.66186c35.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.80e2b7d5.chunk.js": "/PersonsList/static/js/3.80e2b7d5.chunk.js",
     "static/js/3.80e2b7d5.chunk.js.map": "/PersonsList/static/js/3.80e2b7d5.chunk.js.map",
     "index.html": "/PersonsList/index.html",
-    "static/css/main.edf35c5a.chunk.css.map": "/PersonsList/static/css/main.edf35c5a.chunk.css.map",
+    "static/css/main.88e5978d.chunk.css.map": "/PersonsList/static/css/main.88e5978d.chunk.css.map",
     "static/js/2.66186c35.chunk.js.LICENSE.txt": "/PersonsList/static/js/2.66186c35.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b63bcb4c.js",
     "static/js/2.66186c35.chunk.js",
-    "static/css/main.edf35c5a.chunk.css",
-    "static/js/main.02113b4b.chunk.js"
+    "static/css/main.88e5978d.chunk.css",
+    "static/js/main.042475ac.chunk.js"
   ]
 }
