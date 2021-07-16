@@ -1,3 +1,8 @@
+@mixin border {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
 .persons-list {
   margin: 32px 0;
   max-height: 160px;
@@ -21,12 +26,10 @@
 }
 .persons-list__person {
   &:hover {
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
+    @include border;
   }
   &.active .persons-list__person__content {
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
+    @include border;
   }
 }
 .persons-list__person {
@@ -75,10 +78,10 @@
   -o-transition: background-color 500ms linear;
   -ms-transition: background-color 500ms linear;
   transition: background-color 500ms linear;
+
   &:hover {
     background-color: rgb(242, 242, 242);
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
+    @include border;
   }
   @media (max-width: 1000px) {
     cursor: initial;
