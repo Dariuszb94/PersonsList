@@ -110,7 +110,9 @@ const Edit = ({ peopleList, setPeopleList }) => {
   return (
     <section className="edit-container">
       <form onSubmit={handleSubmit}>
-        <img className="edit__img" src={image} alt={`${name}`} />
+        <picture>
+          <img className="edit__img" src={image} alt={`${name}`} />
+        </picture>
         <div className="input-container">
           <label className="input__key">First name</label>
           <input

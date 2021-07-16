@@ -25,13 +25,17 @@ const Person = ({ peopleList, setActive }) => {
     <section className="details-container">
       {people[personID] ? (
         <article className="details">
-          <img
-            className={`${
-              personChanged ? "details__img" : "details__img--active"
-            }`}
-            src={people[personID].picture.large}
-            alt={`${people[personID].name.first}`}
-          />
+          <picture>
+            <img
+              className={`${
+                personChanged ? "details__img" : "details__img--active"
+              }`}
+              src={people[personID].picture.large}
+              alt={`${people[personID].name.first}`}
+              width="128px"
+              height="128px"
+            />
+          </picture>
           <div className="details__names">
             <h2 className="details__names__header">Name</h2>
             <div>
