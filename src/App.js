@@ -5,6 +5,7 @@ import PersonsList from "./Components/PersonsList/PersonsList";
 import Edit from "./Components/Edit/Edit";
 import Person from "./Components/Person/Person";
 import Cursor from "./Components/Cursor/Cursor";
+import Header from "./Components/Header/Header";
 function App() {
   const [peopleList, setPeopleList] = useState([]);
   const [active, setActive] = useState();
@@ -13,6 +14,7 @@ function App() {
     <HashRouter>
       <Cursor />
       <div className="body-layout">
+        <Header />
         <PersonsList
           setPeopleList={setPeopleList}
           peopleList={peopleList}

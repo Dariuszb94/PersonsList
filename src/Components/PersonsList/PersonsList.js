@@ -106,7 +106,6 @@ const PersonsList = ({ setPeopleList, peopleList, active }) => {
   };
   return (
     <section className="persons-list-container">
-      <h1 className="persons-list__header">List of people</h1>
       <div className="actions">
         <button
           className="actions__modify-list"
