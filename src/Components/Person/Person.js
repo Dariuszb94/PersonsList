@@ -35,19 +35,30 @@ const Person = ({ peopleList, setActive }) => {
           <div className="details__names">
             <h2 className="details__names__header">Name</h2>
             <div>
-              {people[personID].name.title} {people[personID].name.first}{" "}
-              {people[personID].name.last}
+              <span className="details__name__content">
+                {people[personID].name.title}
+              </span>{" "}
+              <span className="details__name__content">
+                {people[personID].name.first}
+              </span>{" "}
+              <span className="details__name__content">
+                {people[personID].name.last}
+              </span>
             </div>
           </div>
           <div className="details__contact">
             <h2 className="details__contact__header">Contact</h2>
             <div className="details__contact__phone">
               <PhoneIcon className="details__contact__phone__icon" />
-              {people[personID].phone}
+              <a href={`tel:` + people[personID].phone}>
+                {people[personID].phone}
+              </a>
             </div>
             <div className="details__contact__mail">
               <MailIcon className="details__contact__mail__icon" />
-              {people[personID].email}
+              <a href={`mailto:` + people[personID].email}>
+                {people[personID].email}
+              </a>
             </div>
           </div>
         </article>

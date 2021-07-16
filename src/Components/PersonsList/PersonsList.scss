@@ -84,6 +84,9 @@
 
 .persons-list-container {
   margin: 8px 0;
+  @media (min-width: 800px) {
+    padding: 0 40px;
+  }
 }
 .persons-list__header {
   text-align: center;

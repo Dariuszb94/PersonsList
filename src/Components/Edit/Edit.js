@@ -47,8 +47,14 @@ const Edit = ({ peopleList, setPeopleList }) => {
       validationName() &&
       validationSurname()
     ) {
-      peopleListPrev[personID].name.first = name;
-      peopleListPrev[personID].name.last = surname;
+      const prevName = name;
+      const prevSurname = surname;
+      peopleListPrev[personID].name.first =
+        prevName.toLowerCase().charAt(0).toUpperCase() +
+        prevName.toLowerCase().substring(1);
+      peopleListPrev[personID].name.last =
+        prevSurname.toLowerCase().charAt(0).toUpperCase() +
+        prevSurname.toLowerCase().substring(1);
       peopleListPrev[personID].email = email;
       peopleListPrev[personID].phone = phone;
       setPeopleList(peopleListPrev);

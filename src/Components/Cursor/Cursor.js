@@ -1,5 +1,5 @@
 import React from "react";
-import "./Cursor.scss";
+import "./Cursor.css";
 import usePosition from "../../hooks/usePosition";
 
 const Cursor = () => {
