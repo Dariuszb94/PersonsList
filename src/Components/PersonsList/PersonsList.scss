@@ -80,6 +80,9 @@
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
   }
+  @media (max-width: 1000px) {
+    cursor: initial;
+  }
 }
 
 .persons-list-container {

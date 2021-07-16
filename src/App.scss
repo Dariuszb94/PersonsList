@@ -5,6 +5,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: none;
+  @media (max-width: 1000px) {
+    cursor: initial;
+  }
 }
 a {
   text-decoration: none;
