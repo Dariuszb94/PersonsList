@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# People list
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The App lets you edit persons from list
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [General info](#general-info)
+- [Technologies](#technologies)
+- [Setup](#setup)
 
-### `npm start`
+## General info
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The App has multiple functions regarding car purchase.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+In the header, clicking on logo lets you go to the main page wherever you are. Menu includes of five links to different elements of car dealership. Element of menu - "USED CARS" is a dropdown list, you can choose desired car brand to show. The Main page slider has two backgrounds with content, they are changing every ten seconds. On the main page slider you can also select car brand and car model which you desire to find. You can see list of cars after clicking "search". Footer of page has call and mail functionality, also you can go to twitter and facebook page from there.
 
-### `npm test`
+The Car list can be filtered by brand, model, power, year, price. List is constantly updating. You can reset filters by clicking "RESET FILTERS". List can be also sorted by price. Car list consist of car offers. You can add car to favourite ("Add to favourites") or access list of favourites cars ("View favourites"). Favourite cars are storaged in indexedDB.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+After clicking on car offer you are redirected to detailed offer, you can reach top of this element by clicking on "UP". There you can see more images (zooming is available), feature info, description info and finance info.
 
-### `npm run build`
+Feature info consists of three dropdown list of car attributes. Description info consists of list info and long text info. Finance info lets you calculate car loan basing of car price, term and self deposit.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Below, contact section lets you send request regarding current car, data are being validated before sending. If all data are OK, info is displayed.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Another element is similar car section, based on actual car propositions are displayed. You can click on them to see offers.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Finance section lets you fill the form, data are being validated before sending. If all data are OK, info is displayed.
 
-### `npm run eject`
+About section consists of text info and search. You can also contact (mail and telephone) from there.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Contact section is made to locate company on map and to send info by form.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Technologies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Project is created with:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- React version: 16.13.1
+- Redux: 4.0.5,
+- Redux-thunk: 2.3.0,
+- Styled-components: 5.1.0,
+- Material-ui/icons: 4.9.1,
+- Dexie: 3.0.1
+- React-image-magnifiers: 1.3.2
+- React-transitions: 1.0.0
+- Better-docs: 2.0.1
+- Gh-pages: 2.2.0
+- jsdoc: 3.6.4
 
-## Learn More
+## Setup
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To run this project, download a repo, then go to repo folder, open terminal:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+$ npm install
+$ npm run start
+```
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Click for more detailed documentation](https://dariuszb94.github.io/Lux-cars/docs/index)

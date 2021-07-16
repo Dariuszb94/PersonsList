@@ -24,7 +24,7 @@
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
   }
-  .active .persons-list__person__content {
+  &.active .persons-list__person__content {
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
   }
