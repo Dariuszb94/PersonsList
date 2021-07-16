@@ -21,3 +21,9 @@
   height: 40px;
   background-color: rgba(216, 216, 216, 0.5);
 }
+@media (max-width: 1000px) {
+  .cursor-dot,
+  .cursor-dot-outline {
+    display: none;
+  }
+}

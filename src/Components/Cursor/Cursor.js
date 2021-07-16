@@ -5,6 +5,9 @@ function Cursor() {
   const cursorDot = useRef(null);
 
   useEffect(() => {
+    mountCursor();
+  }, []);
+  const mountCursor = () => {
     var cursor = {
       delay: 8,
       _x: 0,
@@ -78,7 +81,7 @@ function Cursor() {
     };
 
     cursor.init();
-  }, []);
+  };
   return (
     <React.Fragment>
       <div ref={cursorDotOutline} className="cursor-dot-outline"></div>

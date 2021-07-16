@@ -121,7 +121,7 @@ const PersonsList = ({ setPeopleList, peopleList, active }) => {
         <button
           className="actions__modify-list"
           onClick={() => {
-            // setPeople([]);
+            setPeople([]);
             getPeople()
               .then((res) => {
                 setPeople(res.data.results);
