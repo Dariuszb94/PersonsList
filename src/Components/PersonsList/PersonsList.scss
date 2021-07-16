@@ -8,6 +8,8 @@
   max-height: 160px;
   overflow: scroll;
   border: 1px solid #f7f7f7;
+  width: 100%;
+  overflow: hidden;
   @media (min-width: 800px) {
     max-height: 400px;
   }
