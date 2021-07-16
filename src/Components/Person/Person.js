@@ -27,7 +27,7 @@ const Person = ({ peopleList, setActive }) => {
         <article className="details">
           <img
             className={`${
-              personChanged ? "details__img" : "details__img-active"
+              personChanged ? "details__img" : "details__img--active"
             }`}
             src={people[personID].picture.large}
             alt={`${people[personID].name.first}`}
@@ -49,13 +49,25 @@ const Person = ({ peopleList, setActive }) => {
           <div className="details__contact">
             <h2 className="details__contact__header">Contact</h2>
             <div className="details__contact__phone">
-              <PhoneIcon className="details__contact__phone__icon" />
+              <PhoneIcon
+                className={`${
+                  personChanged
+                    ? "details__contact__phone__icon"
+                    : "details__contact__phone__icon--active"
+                }`}
+              />
               <a href={`tel:` + people[personID].phone}>
                 {people[personID].phone}
               </a>
             </div>
             <div className="details__contact__mail">
-              <MailIcon className="details__contact__mail__icon" />
+              <MailIcon
+                className={`${
+                  personChanged
+                    ? "details__contact__mail__icon"
+                    : "details__contact__mail__icon--active"
+                }`}
+              />
               <a href={`mailto:` + people[personID].email}>
                 {people[personID].email}
               </a>
