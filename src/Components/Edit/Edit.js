@@ -38,7 +38,7 @@ const Edit = ({ peopleList, setPeopleList }) => {
   const handleChangePhone = (e) => {
     setPhone(e.target.value);
   };
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const peopleListPrev = [...peopleList];
     if (
@@ -149,7 +149,7 @@ const Edit = ({ peopleList, setPeopleList }) => {
             className={`input__value ${emailInvalid ? "invalid" : ""}`}
           />
         </div>
-        <input className="send" type="submit" value="Wyślij" />
+        <input className="send" type="submit" value="SAVE" />
       </form>
     </section>
   );
