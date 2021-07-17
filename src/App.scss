@@ -21,7 +21,7 @@ ul {
   padding: 0;
   list-style: none;
 }
-.body-layout {
+.container {
   @media (min-width: 800px) {
     display: grid;
     grid-template-areas:

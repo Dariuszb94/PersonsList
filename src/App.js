@@ -13,7 +13,7 @@ function App() {
   return (
     <HashRouter>
       <Cursor />
-      <div className="body-layout">
+      <div className="container">
         <Header />
         <PersonsList
           setPeopleList={setPeopleList}

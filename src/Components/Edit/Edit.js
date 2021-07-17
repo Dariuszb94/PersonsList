@@ -75,7 +75,7 @@ const Edit = ({ peopleList, setPeopleList }) => {
     }
   }
   function validationName() {
-    const nameRegex = /^[a-zA-Z]+$/;
+    const nameRegex = /^([ \u00c0-\u01ffa-zA-Z'\-])+$/;
     if (nameRegex.test(String(name).toLowerCase())) {
       setNameInvalid(false);
       return true;
@@ -85,8 +85,8 @@ const Edit = ({ peopleList, setPeopleList }) => {
     }
   }
   function validationSurname() {
-    const nameRegex = /^[a-zA-Z]+$/;
-    if (nameRegex.test(String(surname).toLowerCase())) {
+    const surnameRegex = /^([ \u00c0-\u01ffa-zA-Z'\-])+$/;
+    if (surnameRegex.test(String(surname).toLowerCase())) {
       setSurnameInvalid(false);
       return true;
     } else {
