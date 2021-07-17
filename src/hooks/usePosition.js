@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useDebounce } from "use-debounce";
 
 export default function usePosition() {
-  const [mousePosition, setPosition] = useState({ x: null, y: null });
+  const [positionRAW, setPosition] = useState({ x: null, y: null });
+  const [position] = useDebounce(positionRAW, 1);
 
   useEffect(() => {
     const mouseMoveHandler = (event) => {
@@ -15,5 +17,5 @@ export default function usePosition() {
     };
   }, []);
 
-  return mousePosition;
+  return position;
 }
