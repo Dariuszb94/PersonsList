@@ -58,10 +58,8 @@ const Edit = ({ peopleList, setPeopleList }) => {
       peopleListPrev[personID].email = email;
       peopleListPrev[personID].phone = phone;
       setPeopleList(peopleListPrev);
-    } else {
-      return false;
+      backToDetails();
     }
-    backToDetails();
   };
   function validationMail() {
     const mailRegex =
@@ -75,7 +73,7 @@ const Edit = ({ peopleList, setPeopleList }) => {
     }
   }
   function validationName() {
-    const nameRegex = /^([ \u00c0-\u01ffa-zA-Z'\-])+$/;
+    const nameRegex = /^([ \u00c0-\u01ffa-zA-Z'])+$/;
     if (nameRegex.test(String(name).toLowerCase())) {
       setNameInvalid(false);
       return true;
@@ -85,7 +83,7 @@ const Edit = ({ peopleList, setPeopleList }) => {
     }
   }
   function validationSurname() {
-    const surnameRegex = /^([ \u00c0-\u01ffa-zA-Z'\-])+$/;
+    const surnameRegex = /^([ \u00c0-\u01ffa-zA-Z'])+$/;
     if (surnameRegex.test(String(surname).toLowerCase())) {
       setSurnameInvalid(false);
       return true;
