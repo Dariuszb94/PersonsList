@@ -1,6 +1,6 @@
 import { useSpring, animated } from "react-spring";
 import { useState, useEffect } from "react";
-import "./Header.css";
+import "./Header.scss";
 
 const useAnimatedPath = ({ toggle }) => {
   const [length, setLength] = useState(null);
@@ -14,7 +14,6 @@ const useAnimatedPath = ({ toggle }) => {
   return {
     style: animatedStyle,
     ref: (ref) => {
-      // The ref is `null` on component unmount
       if (ref) {
         setLength(ref.getTotalLength());
       }
@@ -28,10 +27,6 @@ const Part = ({ color, d, toggle }) => {
   return (
     <animated.path
       {...animationStrokeProps}
-      // as the `animationStrokeProps` have a `style` property
-      // on it, it would be overriden by just passing
-      // `style={animationFillStyle}`
-
       stroke={color}
       strokeWidth="4"
       d={d}
