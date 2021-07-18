@@ -8,7 +8,6 @@ const Edit = ({ peopleList, setPeopleList }) => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [image, setImage] = useState("");
-
   const [emailInvalid, setEmailInvalid] = useState(false);
   const [phoneInvalid, setPhoneInvalid] = useState(false);
   const [nameInvalid, setNameInvalid] = useState(false);
@@ -109,7 +108,13 @@ const Edit = ({ peopleList, setPeopleList }) => {
     <section className="edit-container">
       <form onSubmit={handleSubmit}>
         <picture>
-          <img className="edit__img" src={image} alt={`${name}`} />
+          <img
+            className="edit__img"
+            src={image}
+            alt={`${name}`}
+            width="128px"
+            height="128px"
+          />
         </picture>
         <div className="input-container">
           <label className="input__key">First name</label>
