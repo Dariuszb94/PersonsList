@@ -26,6 +26,10 @@ Project is created with:
 - Material-ui/icons: 4.11.2,
 - Dexie: 3.2.0-beta.1
 - Gh-pages: 3.2.3
+- React-spring: 9.2.4
+- Sass: 1.35.2
+- Use-debounce: 7.0.0
+- Typewriter-effect: 2.18.0
 
 ## Setup
 
