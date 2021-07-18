@@ -30,6 +30,7 @@ Project is created with:
 - Sass: 1.35.2
 - Use-debounce: 7.0.0
 - Typewriter-effect: 2.18.0
+- Axios: 0.21.1
 
 ## Setup
 
